@@ -138,10 +138,46 @@ const paintings = [
     {
         title: "Valley Light",
         price: 500,
-        size: '14" × 10"',
+        size: '20" × 20"',
         medium: "Oil on Board",
         image: "images/painting-14.png",
         description: "Dramatic cloud formations over rolling green and golden Yorkshire countryside.",
         sold: true
-    }
-];
+    },
+    {
+        title: "To be Named",
+        price: 500,
+        size: '20" × 20"',
+        medium: "Oil on Board",
+        image: "images/painting-15.png",
+        description: "To Be Added.",
+        sold: false
+    },
+    {
+        title: "To be Named",
+        price: 500,
+        size: '20" × 20"',
+        medium: "Oil on Board",
+        image: "images/painting-16.png",
+        description: "To Be Added.",
+        sold: false
+    },
+    {
+        title: "To be Named",
+        price: 500,
+        size: '20" × 20"',
+        medium: "Oil on Board",
+        image: "images/painting-17.png",
+        description: "To Be Added.",
+        sold: false
+    },
+    {
+        title: "To be Named",
+        price: 500,
+        size: '20" × 20"',
+        medium: "Oil on Board",
+        image: "images/painting-18.png",
+        description: "To Be Added.",
+        sold: false
+      }
+      ];
