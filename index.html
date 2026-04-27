@@ -386,6 +386,128 @@
             pointer-events: none;
         }
 
+        /* ===== WATERMARK OVERLAY ===== */
+        .painting-image-wrap::after,
+        .modal-image-wrap::after {
+            content: 'Daryl Lakey Art    Daryl Lakey Art    Daryl Lakey Art    Daryl Lakey Art    Daryl Lakey Art    Daryl Lakey Art    Daryl Lakey Art    Daryl Lakey Art    Daryl Lakey Art    Daryl Lakey Art    Daryl Lakey Art    Daryl Lakey Art';
+            position: absolute;
+            inset: -50%;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: center;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            letter-spacing: 0.3em;
+            color: rgba(255,255,255,0.08);
+            transform: rotate(-30deg);
+            pointer-events: none;
+            z-index: 4;
+            line-height: 4;
+            word-spacing: 2em;
+            white-space: normal;
+            overflow: hidden;
+        }
+        img.painting-img,
+        .modal-image-wrap img {
+            -webkit-user-drag: none;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        /* ===== ZOOM VIEWER ===== */
+        .zoom-viewer {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 4000;
+            background: rgba(0,0,0,0.95);
+            cursor: grab;
+            overflow: hidden;
+        }
+        .zoom-viewer.active { display: block; }
+        .zoom-viewer:active { cursor: grabbing; }
+        .zoom-viewer img {
+            position: absolute;
+            max-width: none;
+            transform-origin: 0 0;
+            -webkit-user-drag: none;
+            user-select: none;
+        }
+        .zoom-viewer::after {
+            content: 'Daryl Lakey Art    Daryl Lakey Art    Daryl Lakey Art    Daryl Lakey Art    Daryl Lakey Art    Daryl Lakey Art    Daryl Lakey Art    Daryl Lakey Art    Daryl Lakey Art    Daryl Lakey Art    Daryl Lakey Art    Daryl Lakey Art    Daryl Lakey Art    Daryl Lakey Art    Daryl Lakey Art    Daryl Lakey Art';
+            position: absolute;
+            inset: -100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: center;
+            font-family: var(--font-sans);
+            font-size: 1.5rem;
+            letter-spacing: 0.3em;
+            color: rgba(255,255,255,0.06);
+            transform: rotate(-30deg);
+            pointer-events: none;
+            z-index: 4001;
+            line-height: 4;
+            word-spacing: 2em;
+            white-space: normal;
+            overflow: hidden;
+        }
+        .zoom-close {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 48px;
+            height: 48px;
+            border: none;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 4002;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        .zoom-close:hover { background: rgba(255,255,255,0.3); }
+        .zoom-hint {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.5);
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            z-index: 4002;
+            letter-spacing: 0.1em;
+            pointer-events: none;
+        }
+        .zoom-in-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            cursor: pointer;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: auto;
+        }
+        .painting-image-wrap:hover .zoom-in-btn,
+        .modal-image-wrap:hover .zoom-in-btn { opacity: 1; }
+
         .painting-info {
             padding: 24px;
         }
@@ -532,7 +654,6 @@
         .modal-details .modal-medium {
             font-size: 0.85rem;
             color: var(--gray-600);
-            font-style: italic;
             margin-bottom: 20px;
         }
         .modal-details .modal-price {
@@ -1018,6 +1139,7 @@
             <button class="modal-close" onclick="closeModalDirect()">&times;</button>
             <div class="modal-body">
                 <div class="modal-image-wrap" id="modalImageWrap">
+                    <button class="zoom-in-btn" id="modalZoomBtn" style="opacity:1;" title="Zoom in">&#x1F50D;</button>
                     <img id="modalImg" src="" alt="">
                 </div>
                 <div class="modal-details">
@@ -1053,6 +1175,13 @@
 
     <!-- TOAST -->
     <div class="toast" id="toast"></div>
+
+    <!-- ZOOM VIEWER -->
+    <div class="zoom-viewer" id="zoomViewer">
+        <button class="zoom-close" onclick="closeZoom()">&times;</button>
+        <img id="zoomImg" src="" alt="">
+        <div class="zoom-hint">Scroll to zoom • Drag to pan</div>
+    </div>
 
     <!-- LOAD CONFIG FILES -->
     <script src="paintings.js"></script>
@@ -1097,11 +1226,12 @@
         card.innerHTML =
             '<div class="painting-image-wrap">' +
                 soldBanner +
+                '<button class="zoom-in-btn" onclick="event.stopPropagation(); openZoom(\'' + p.image + '\')" title="Zoom in">&#x1F50D;</button>' +
                 '<img src="' + p.image + '" alt="' + p.title + '" class="painting-img" loading="lazy">' +
             '</div>' +
             '<div class="painting-info">' +
                 '<h3 class="painting-title">' + p.title + '</h3>' +
-                '<p class="painting-size">' + p.size + ' — ' + p.medium + '</p>' +
+                '<p class="painting-size">Size unframed - ' + p.sizeUnframed + '<br>Size framed - ' + p.sizeFramed + '<br>Medium - ' + p.medium + '</p>' +
                 '<p class="painting-price">£' + p.price + '</p>' +
                 '<div class="painting-actions">' +
                     '<button class="btn-view" onclick="openModal(' + index + ')">View Details</button>' +
@@ -1131,8 +1261,8 @@
         document.getElementById('modalImg').src = p.image;
         document.getElementById('modalImg').alt = p.title;
         document.getElementById('modalTitle').textContent = p.title;
-        document.getElementById('modalSize').textContent = p.size;
-        document.getElementById('modalMedium').textContent = p.medium;
+        document.getElementById('modalSize').innerHTML = 'Size unframed - ' + p.sizeUnframed + '<br>Size framed - ' + p.sizeFramed;
+        document.getElementById('modalMedium').textContent = 'Medium - ' + p.medium;
         document.getElementById('modalPrice').textContent = '£' + p.price;
         document.getElementById('modalDesc').textContent = p.description;
 
@@ -1236,6 +1366,137 @@
     // Close mobile menu on link click
     document.querySelectorAll('.nav-links a').forEach(function(a) {
         a.addEventListener('click', function() { document.getElementById('navLinks').classList.remove('open'); });
+    });
+
+    // ===== ZOOM VIEWER =====
+    var zoomScale = 1;
+    var zoomX = 0;
+    var zoomY = 0;
+    var isDragging = false;
+    var dragStartX, dragStartY, dragOffsetX, dragOffsetY;
+    var zoomImg = document.getElementById('zoomImg');
+    var zoomViewer = document.getElementById('zoomViewer');
+
+    function openZoom(imageSrc) {
+        zoomImg.src = imageSrc;
+        zoomScale = 1;
+        zoomViewer.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        zoomImg.onload = function() {
+            centreZoomImage();
+        };
+        if (zoomImg.complete) centreZoomImage();
+    }
+
+    function centreZoomImage() {
+        var vw = window.innerWidth;
+        var vh = window.innerHeight;
+        var iw = zoomImg.naturalWidth;
+        var ih = zoomImg.naturalHeight;
+        var fitScale = Math.min(vw * 0.85 / iw, vh * 0.85 / ih);
+        zoomScale = fitScale;
+        zoomX = (vw - iw * zoomScale) / 2;
+        zoomY = (vh - ih * zoomScale) / 2;
+        applyZoomTransform();
+    }
+
+    function applyZoomTransform() {
+        zoomImg.style.transform = 'translate(' + zoomX + 'px, ' + zoomY + 'px) scale(' + zoomScale + ')';
+    }
+
+    function closeZoom() {
+        zoomViewer.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Scroll to zoom
+    zoomViewer.addEventListener('wheel', function(e) {
+        e.preventDefault();
+        var rect = zoomViewer.getBoundingClientRect();
+        var mouseX = e.clientX - rect.left;
+        var mouseY = e.clientY - rect.top;
+        var prevScale = zoomScale;
+        var delta = e.deltaY > 0 ? 0.9 : 1.1;
+        zoomScale = Math.max(0.2, Math.min(10, zoomScale * delta));
+        zoomX = mouseX - (mouseX - zoomX) * (zoomScale / prevScale);
+        zoomY = mouseY - (mouseY - zoomY) * (zoomScale / prevScale);
+        applyZoomTransform();
+    }, { passive: false });
+
+    // Drag to pan
+    zoomViewer.addEventListener('mousedown', function(e) {
+        if (e.target === document.querySelector('.zoom-close')) return;
+        isDragging = true;
+        dragStartX = e.clientX;
+        dragStartY = e.clientY;
+        dragOffsetX = zoomX;
+        dragOffsetY = zoomY;
+    });
+    window.addEventListener('mousemove', function(e) {
+        if (!isDragging) return;
+        zoomX = dragOffsetX + (e.clientX - dragStartX);
+        zoomY = dragOffsetY + (e.clientY - dragStartY);
+        applyZoomTransform();
+    });
+    window.addEventListener('mouseup', function() { isDragging = false; });
+
+    // Touch support for mobile
+    var lastTouchDist = 0;
+    var lastTouchX = 0;
+    var lastTouchY = 0;
+    zoomViewer.addEventListener('touchstart', function(e) {
+        if (e.touches.length === 1) {
+            isDragging = true;
+            dragStartX = e.touches[0].clientX;
+            dragStartY = e.touches[0].clientY;
+            dragOffsetX = zoomX;
+            dragOffsetY = zoomY;
+        } else if (e.touches.length === 2) {
+            isDragging = false;
+            lastTouchDist = Math.hypot(e.touches[1].clientX - e.touches[0].clientX, e.touches[1].clientY - e.touches[0].clientY);
+        }
+    }, { passive: false });
+    zoomViewer.addEventListener('touchmove', function(e) {
+        e.preventDefault();
+        if (e.touches.length === 1 && isDragging) {
+            zoomX = dragOffsetX + (e.touches[0].clientX - dragStartX);
+            zoomY = dragOffsetY + (e.touches[0].clientY - dragStartY);
+            applyZoomTransform();
+        } else if (e.touches.length === 2) {
+            var dist = Math.hypot(e.touches[1].clientX - e.touches[0].clientX, e.touches[1].clientY - e.touches[0].clientY);
+            var prevScale = zoomScale;
+            zoomScale = Math.max(0.2, Math.min(10, zoomScale * (dist / lastTouchDist)));
+            var cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+            var cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+            zoomX = cx - (cx - zoomX) * (zoomScale / prevScale);
+            zoomY = cy - (cy - zoomY) * (zoomScale / prevScale);
+            lastTouchDist = dist;
+            applyZoomTransform();
+        }
+    }, { passive: false });
+    zoomViewer.addEventListener('touchend', function() { isDragging = false; });
+
+    // Close zoom with Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            if (zoomViewer.classList.contains('active')) closeZoom();
+            else if (document.getElementById('modalBackdrop').classList.contains('active')) closeModalDirect();
+        }
+    });
+
+    // Wire up modal zoom button
+    document.getElementById('modalZoomBtn').addEventListener('click', function(e) {
+        e.stopPropagation();
+        var src = document.getElementById('modalImg').src;
+        openZoom(src);
+    });
+
+    // ===== IMAGE PROTECTION =====
+    // Disable right-click on images
+    document.addEventListener('contextmenu', function(e) {
+        if (e.target.tagName === 'IMG' || e.target.closest('.painting-image-wrap') || e.target.closest('.modal-image-wrap') || e.target.closest('.zoom-viewer')) {
+            e.preventDefault();
+        }
     });
     </script>
 </body>

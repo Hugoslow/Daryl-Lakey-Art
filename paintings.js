@@ -21,17 +21,19 @@ const paintings = [
     {
         title: "Winter Moonrise",
         price: 450,
-        size: '20" × 8"',
-        medium: "Oil on Board",
+        sizeUnframed: '20" x 8"',
+        sizeFramed: '26" x 14"',
+        medium: "Oil on Canvas",
         image: "images/painting-1.png",
         description: "A luminous winter moon casting golden light across a snow-covered Yorkshire landscape.",
         sold: false
     },
     {
-        title: "Under the Weight of Blue",
+        title: "Yorkshire Summer",
         price: 525,
-        size: '16" × 12"',
-        medium: "Oil on Board",
+        sizeUnframed: '16" x 12"',
+        sizeFramed: '22" x 18"',
+        medium: "Oil on Canvas",
         image: "images/painting-2.png",
         description: "Vast golden moorland stretching beneath a brilliant blue Yorkshire sky.",
         sold: false
@@ -39,17 +41,19 @@ const paintings = [
     {
         title: "Moonlit Pines",
         price: 475,
-        size: '12" × 16"',
-        medium: "Oil on Board",
+        sizeUnframed: '12" x 16"',
+        sizeFramed: '18" x 22"',
+        medium: "Oil on Canvas",
         image: "images/painting-3.png",
         description: "A serene moonlit path winding through frost-kissed pine trees under a starlit sky.",
         sold: false
     },
     {
-        title: "Reflective Glory",
+        title: "Open Skies",
         price: 425,
-        size: '14" × 10"',
-        medium: "Oil on Board",
+        sizeUnframed: '14" x 10"',
+        sizeFramed: '20" x 16"',
+        medium: "Oil on Canvas",
         image: "images/painting-4.png",
         description: "Soft clouds drifting over a tranquil heath with a winding path leading to the horizon.",
         sold: false
@@ -57,8 +61,9 @@ const paintings = [
     {
         title: "Breaking Through",
         price: 550,
-        size: '14" × 14"',
-        medium: "Oil on Board",
+        sizeUnframed: '14" x 14"',
+        sizeFramed: '20" x 20"',
+        medium: "Oil on Canvas",
         image: "images/painting-5.png",
         description: "Dramatic storm clouds parting to reveal shafts of light illuminating the green dale below.",
         sold: false
@@ -66,8 +71,9 @@ const paintings = [
     {
         title: "Rain Curtain",
         price: 425,
-        size: '12" × 10"',
-        medium: "Oil on Board",
+        sizeUnframed: '12" x 10"',
+        sizeFramed: '18" x 16"',
+        medium: "Oil on Canvas",
         image: "images/painting-6.png",
         description: "An atmospheric study of rain sweeping across purple moorland beneath a brooding sky.",
         sold: false
@@ -75,8 +81,9 @@ const paintings = [
     {
         title: "Sunset Ablaze",
         price: 475,
-        size: '12" × 10"',
-        medium: "Oil on Board",
+        sizeUnframed: '12" x 10"',
+        sizeFramed: '18" x 16"',
+        medium: "Oil on Canvas",
         image: "images/painting-7.png",
         description: "Vivid orange and purple clouds erupting over lush green Yorkshire fields.",
         sold: false
@@ -84,8 +91,9 @@ const paintings = [
     {
         title: "Twilight Valley",
         price: 525,
-        size: '14" × 14"',
-        medium: "Oil on Board",
+        sizeUnframed: '14" x 14"',
+        sizeFramed: '20" x 20"',
+        medium: "Oil on Canvas",
         image: "images/painting-8.png",
         description: "A peaceful valley bathed in the soft purple light of approaching dusk.",
         sold: false
@@ -93,8 +101,9 @@ const paintings = [
     {
         title: "Heather Storm",
         price: 550,
-        size: '14" × 14"',
-        medium: "Oil on Board",
+        sizeUnframed: '14" x 14"',
+        sizeFramed: '20" x 20"',
+        medium: "Oil on Canvas",
         image: "images/painting-9.png",
         description: "Deep purple heather moorland under a dramatic sky streaked with colour.",
         sold: false
@@ -102,8 +111,9 @@ const paintings = [
     {
         title: "Moorland Path",
         price: 475,
-        size: '12" × 10"',
-        medium: "Oil on Board",
+        sizeUnframed: '12" x 10"',
+        sizeFramed: '18" x 16"',
+        medium: "Oil on Canvas",
         image: "images/painting-10.png",
         description: "A winding track through autumnal moorland beneath towering cumulus clouds.",
         sold: false
@@ -111,8 +121,9 @@ const paintings = [
     {
         title: "Colour Symphony",
         price: 500,
-        size: '12" × 10" Image size unframed',
-        medium: "Oil on Board",
+        sizeUnframed: '12" x 10"',
+        sizeFramed: '18" x 16"',
+        medium: "Oil on Canvas",
         image: "images/painting-11.png",
         description: "An abstract impression of trees reflected in still water, ablaze with colour.",
         sold: false
@@ -120,7 +131,8 @@ const paintings = [
     {
         title: "Storm's Edge",
         price: 525,
-        size: '12" × 16" Image size unframed',
+        sizeUnframed: '12" x 16"',
+        sizeFramed: '18" x 22"',
         medium: "Oil on Board",
         image: "images/painting-12.png",
         description: "Intense blue and violet storm clouds releasing rain over a quiet green landscape.",
@@ -129,8 +141,9 @@ const paintings = [
     {
         title: "Approaching Storm",
         price: 500,
-        size: '14" × 10"',
-        medium: "Oil on Board",
+        sizeUnframed: '14" x 10"',
+        sizeFramed: '20" x 16"',
+        medium: "Oil on Canvas",
         image: "images/painting-13.png",
         description: "Dark clouds gathering over sunlit green Yorkshire dales with patches of golden light.",
         sold: false
@@ -138,46 +151,11 @@ const paintings = [
     {
         title: "Valley Light",
         price: 500,
-        size: '20" × 20"',
-        medium: "Oil on Board",
+        sizeUnframed: '14" x 10"',
+        sizeFramed: '20" x 16"',
+        medium: "Oil on Canvas",
         image: "images/painting-14.png",
         description: "Dramatic cloud formations over rolling green and golden Yorkshire countryside.",
-        sold: true
-    },
-    {
-        title: "To be Named",
-        price: 500,
-        size: '20" × 20"',
-        medium: "Oil on Board",
-        image: "images/painting-15.png",
-        description: "To Be Added.",
         sold: false
-    },
-    {
-        title: "To be Named",
-        price: 500,
-        size: '20" × 20"',
-        medium: "Oil on Board",
-        image: "images/painting-16.png",
-        description: "To Be Added.",
-        sold: false
-    },
-    {
-        title: "To be Named",
-        price: 500,
-        size: '20" × 20"',
-        medium: "Oil on Board",
-        image: "images/painting-17.png",
-        description: "To Be Added.",
-        sold: false
-    },
-    {
-        title: "To be Named",
-        price: 500,
-        size: '20" × 20"',
-        medium: "Oil on Board",
-        image: "images/painting-18.png",
-        description: "To Be Added.",
-        sold: false
-      }
-      ];
+    }
+];
