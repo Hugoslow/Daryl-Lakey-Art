@@ -111,7 +111,7 @@ const paintings = [
     {
         title: "Colour Symphony",
         price: 500,
-        size: '12" × 10"',
+        size: '12" × 10" Image size unframed',
         medium: "Oil on Board",
         image: "images/painting-11.png",
         description: "An abstract impression of trees reflected in still water, ablaze with colour.",
@@ -120,7 +120,7 @@ const paintings = [
     {
         title: "Storm's Edge",
         price: 525,
-        size: '12" × 16"',
+        size: '12" × 16" Image size unframed',
         medium: "Oil on Board",
         image: "images/painting-12.png",
         description: "Intense blue and violet storm clouds releasing rain over a quiet green landscape.",
