@@ -157,5 +157,45 @@ const paintings = [
         image: "images/painting-14.png",
         description: "Dramatic cloud formations over rolling green and golden Yorkshire countryside.",
         sold: true
+},
+    {
+        title: "TBC",
+        price: 400,
+        sizeUnframed: '20" x 20"',
+        sizeFramed: '24" x 24"',
+        medium: "Oil on Canvas",
+        image: "images/painting-15.png",
+        description: "Blagh Blagh Blagh.",
+        sold: false
+},
+    {
+        title: "TBC",
+        price: 400,
+        sizeUnframed: '20" x 20"',
+        sizeFramed: '24" x 24"',
+        medium: "Oil on Canvas",
+        image: "images/painting-16.png",
+        description: "Blagh Blagh Blagh.",
+        sold: false
+},
+    {
+        title: "TBC",
+        price: 400,
+        sizeUnframed: '20" x 20"',
+        sizeFramed: '24" x 24"',
+        medium: "Oil on Canvas",
+        image: "images/painting-17.png",
+        description: "Blagh Blagh Blagh.",
+        sold: false
+},
+    {
+        title: "TBC",
+        price: 400,
+        sizeUnframed: '20" x 20"',
+        sizeFramed: '24" x 24"',
+        medium: "Oil on Canvas",
+        image: "images/painting-18.png",
+        description: "Blagh Blagh Blagh.",
+        sold: false
     }
 ];
