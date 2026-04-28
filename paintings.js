@@ -19,7 +19,7 @@
 
 const paintings = [
     {
-        title: "Winter Moonrise",
+        title: "Winter's Day",
         price: 450,
         sizeUnframed: '20" x 8"',
         sizeFramed: '26" x 14"',
@@ -39,7 +39,7 @@ const paintings = [
         sold: false
     },
     {
-        title: "Moonlit Pines",
+        title: "Winter Solace",
         price: 475,
         sizeUnframed: '12" x 16"',
         sizeFramed: '18" x 22"',
@@ -69,7 +69,7 @@ const paintings = [
         sold: false
     },
     {
-        title: "Rain Curtain",
+        title: "Wonder",
         price: 425,
         sizeUnframed: '12" x 10"',
         sizeFramed: '18" x 16"',
@@ -150,7 +150,7 @@ const paintings = [
         sold: true
 },
     {
-        title: "TBC",
+        title: "A new Day",
         price: 400,
         sizeUnframed: '20" x 20"',
         sizeFramed: '24" x 24"',
@@ -160,7 +160,7 @@ const paintings = [
         sold: false
 },
     {
-        title: "TBC",
+        title: "Time for reflectiom",
         price: 400,
         sizeUnframed: '20" x 20"',
         sizeFramed: '24" x 24"',
@@ -170,7 +170,7 @@ const paintings = [
         sold: false
 },
     {
-        title: "TBC",
+        title: "Journey's End",
         price: 400,
         sizeUnframed: '20" x 20"',
         sizeFramed: '24" x 24"',
@@ -180,7 +180,7 @@ const paintings = [
         sold: false
 },
     {
-        title: "TBC",
+        title: "Perfect Ending",
         price: 400,
         sizeUnframed: '20" x 20"',
         sizeFramed: '24" x 24"',
