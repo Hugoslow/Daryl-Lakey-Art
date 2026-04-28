@@ -29,7 +29,7 @@ const paintings = [
         sold: false
     },
     {
-        title: "Under the weight of Blue",
+        title: "Under the Weight of Blue",
         price: 525,
         sizeUnframed: '16" x 12"',
         sizeFramed: '22" x 18"',
@@ -49,7 +49,7 @@ const paintings = [
         sold: false
     },
     {
-        title: "Open Skies",
+        title: "Reflective Glory",
         price: 425,
         sizeUnframed: '14" x 10"',
         sizeFramed: '20" x 16"',
