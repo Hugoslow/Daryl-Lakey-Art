@@ -29,7 +29,7 @@ const paintings = [
         sold: false
     },
     {
-        title: "Yorkshire Summer",
+        title: "Under the weight of Blue",
         price: 525,
         sizeUnframed: '16" x 12"',
         sizeFramed: '22" x 18"',
@@ -156,6 +156,6 @@ const paintings = [
         medium: "Oil on Canvas",
         image: "images/painting-14.png",
         description: "Dramatic cloud formations over rolling green and golden Yorkshire countryside.",
-        sold: false
+        sold: True
     }
 ];
