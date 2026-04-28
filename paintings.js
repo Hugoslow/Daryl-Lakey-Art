@@ -137,16 +137,7 @@ const paintings = [
         image: "images/painting-12.png",
         description: "Intense blue and violet storm clouds releasing rain over a quiet green landscape.",
         sold: false
-    },
-    {
-        title: "Approaching Storm",
-        price: 500,
-        sizeUnframed: '14" x 10"',
-        sizeFramed: '20" x 16"',
-        medium: "Oil on Canvas",
-        image: "images/painting-13.png",
-        description: "Dark clouds gathering over sunlit green Yorkshire dales with patches of golden light.",
-        sold: false
+
     },
     {
         title: "Valley Light",
