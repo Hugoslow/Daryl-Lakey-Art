@@ -156,6 +156,6 @@ const paintings = [
         medium: "Oil on Canvas",
         image: "images/painting-14.png",
         description: "Dramatic cloud formations over rolling green and golden Yorkshire countryside.",
-        sold: True
+        sold: true
     }
 ];
