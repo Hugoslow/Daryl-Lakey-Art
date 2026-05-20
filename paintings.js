@@ -177,7 +177,7 @@ const paintings = [
         medium: "Oil on Board",
         image: "images/painting-17.png",
         description: "Blagh Blagh Blagh.",
-        sold: false
+        sold: true
 },
     {
         title: "Perfect Ending",
