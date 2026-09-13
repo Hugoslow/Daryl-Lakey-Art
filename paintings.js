@@ -21,8 +21,8 @@ const paintings = [
     {
         title: "Snowbound Silence",
         price: 399,
-        sizeUnframed: '29.75 x 13 inches 76 x 33 cm's',
-        sizeFramed: '33.75 x 17 inches 85.7 x 43 cm's',
+        sizeUnframed: '29.75 x 13 inches 76 x 33 cms',
+        sizeFramed: '33.75 x 17 inches 85.7 x 43 cms',
         medium: "Oil on Board",
         image: "images/painting-1.png",
         description: "A luminous winter moon casting golden light across a snow-covered Yorkshire landscape.",
@@ -32,7 +32,7 @@ const paintings = [
         title: "Under the Weight of Blue",
         price: 525,
         sizeUnframed: 'Not Available',
-        sizeFramed: '28.3" x 36.3" inches 72 x 92cm's',
+        sizeFramed: '28.3" x 36.3" inches 72 x 92cms',
         medium: "Oil on Board",
         image: "images/painting-2.png",
         description: "Vast golden moorland stretching beneath a brilliant blue Yorkshire sky.",
@@ -41,7 +41,7 @@ const paintings = [
     {
         title: "Winter Solace",
         price: 350,
-        sizeUnframed: '11.9 x 9.9 inches 30 x 25 cm's',
+        sizeUnframed: '11.9 x 9.9 inches 30 x 25 cms',
         sizeFramed: 'Size & Price on Application Unframed',
         medium: "Acrylic on Canvas Board",
         image: "images/painting-3.png",
@@ -51,8 +51,8 @@ const paintings = [
     {
         title: "An Eternal Promise",
         price: 425,
-        sizeUnframed: '15.75 x 24 inches 40 x 61 cm's',
-        sizeFramed: '19.75 x 17 inches 50 x 71 cm's',
+        sizeUnframed: '15.75 x 24 inches 40 x 61 cms',
+        sizeFramed: '19.75 x 17 inches 50 x 71 cms',
         medium: "Oil on Board",
         image: "images/painting-4.png",
         description: "Soft clouds drifting over a tranquil heath with a winding path leading to the horizon.",
@@ -60,7 +60,7 @@ const paintings = [
     },
     {
         title: "Breaking Through",
-        price: Available Soon / Preorder,
+        price: null,
         sizeUnframed: 'TBC',
         sizeFramed: 'TBC',
         medium: "TBC",
@@ -70,7 +70,7 @@ const paintings = [
     },
     {
         title: "Wonder",
-        price: Available Soon / Preorder,
+        price: null,
         sizeUnframed: 'TBC',
         sizeFramed: 'TBC',
         medium: "TBC",
@@ -137,7 +137,6 @@ const paintings = [
         image: "images/painting-12.png",
         description: "Intense blue and violet storm clouds releasing rain over a quiet green landscape.",
         sold: false
-
     },
     {
         title: "Valley Light",
@@ -148,7 +147,7 @@ const paintings = [
         image: "images/painting-14.png",
         description: "Dramatic cloud formations over rolling green and golden Yorkshire countryside.",
         sold: true
-},
+    },
     {
         title: "A new Day",
         price: 400,
@@ -158,7 +157,7 @@ const paintings = [
         image: "images/painting-15.png",
         description: "Blagh Blagh Blagh.",
         sold: false
-},
+    },
     {
         title: "Time for reflectiom",
         price: 400,
@@ -168,7 +167,7 @@ const paintings = [
         image: "images/painting-16.png",
         description: "Blagh Blagh Blagh.",
         sold: false
-},
+    },
     {
         title: "Journey's End",
         price: 400,
@@ -178,7 +177,7 @@ const paintings = [
         image: "images/painting-17.png",
         description: "Blagh Blagh Blagh.",
         sold: true
-},
+    },
     {
         title: "Perfect Ending",
         price: 400,
