@@ -15,6 +15,7 @@
 //
 //  IMPORTANT: Don't delete the square brackets [ ] at the start and end
 //             Don't remove the word "const paintings =" at the top
+//             Never use an apostrophe inside '...' quotes — it breaks the file
 // ============================================================
 
 const paintings = [
@@ -81,9 +82,9 @@ const paintings = [
     {
         title: "Sunset Ablaze",
         price: 475,
-        sizeUnframed: '12" x 10"',
-        sizeFramed: '18" x 16"',
-        medium: "Oil on Board",
+        sizeUnframed: '11.75 x 16.5 inches 30 x 42 cms',
+        sizeFramed: '15.75 x 20.5 inches 40 x 52 cms approx',
+        medium: "Oil on Canvas",
         image: "images/painting-7.png",
         description: "Vivid orange and purple clouds erupting over lush green Yorkshire fields.",
         sold: false
@@ -91,9 +92,9 @@ const paintings = [
     {
         title: "Twilight Valley",
         price: 525,
-        sizeUnframed: '14" x 14"',
-        sizeFramed: '20" x 20"',
-        medium: "Oil on Board",
+        sizeUnframed: '23.5 x 23.5 inches 60 x 60 cms',
+        sizeFramed: '27.5 x 27.5 inches 70 x 70 cms approx',
+        medium: "Oil on Canvas",
         image: "images/painting-8.png",
         description: "A peaceful valley bathed in the soft purple light of approaching dusk.",
         sold: false
@@ -101,9 +102,9 @@ const paintings = [
     {
         title: "Heather Storm",
         price: 550,
-        sizeUnframed: '14" x 14"',
-        sizeFramed: '20" x 20"',
-        medium: "Oil on Board",
+        sizeUnframed: 'TBC',
+        sizeFramed: 'TBC',
+        medium: "TBC",
         image: "images/painting-9.png",
         description: "Deep purple heather moorland under a dramatic sky streaked with colour.",
         sold: false
@@ -111,8 +112,8 @@ const paintings = [
     {
         title: "Moorland Path",
         price: 475,
-        sizeUnframed: '12" x 10"',
-        sizeFramed: '18" x 16"',
+        sizeUnframed: '19.75 x 27 inches 50 x 69 cms',
+        sizeFramed: '23.75 x 31 inches 60 x 79 cms approx',
         medium: "Oil on Board",
         image: "images/painting-10.png",
         description: "A winding track through autumnal moorland beneath towering cumulus clouds.",
@@ -121,9 +122,9 @@ const paintings = [
     {
         title: "Colour Symphony",
         price: 500,
-        sizeUnframed: '12" x 10"',
-        sizeFramed: '18" x 16"',
-        medium: "Oil on Board",
+        sizeUnframed: '11.75 x 16.5 inches 30 x 42 cms',
+        sizeFramed: '15.75 x 20.5 inches 40 x 52 cms approx',
+        medium: "Oil on Canvas",
         image: "images/painting-11.png",
         description: "An abstract impression of trees reflected in still water, ablaze with colour.",
         sold: false
@@ -131,9 +132,9 @@ const paintings = [
     {
         title: "Storm's Edge",
         price: 525,
-        sizeUnframed: '12" x 16"',
-        sizeFramed: '18" x 22"',
-        medium: "Oil on Board",
+        sizeUnframed: '14 x 11 inches 36 x 28 cms',
+        sizeFramed: '18 x 15 inches 46 x 38 cms approx',
+        medium: "Oil on Canvas Board",
         image: "images/painting-12.png",
         description: "Intense blue and violet storm clouds releasing rain over a quiet green landscape.",
         sold: false
@@ -141,29 +142,29 @@ const paintings = [
     {
         title: "Valley Light",
         price: 500,
-        sizeUnframed: '14" x 10"',
-        sizeFramed: '20" x 16"',
+        sizeUnframed: '25.5 x 23.5 inches 65 x 60 cms',
+        sizeFramed: '29.5 x 27.5 inches 75 x 70 cms approx',
         medium: "Oil on Board",
         image: "images/painting-14.png",
         description: "Dramatic cloud formations over rolling green and golden Yorkshire countryside.",
         sold: true
     },
     {
-        title: "A new Day",
+        title: "A New Day",
         price: 400,
-        sizeUnframed: '20" x 20"',
-        sizeFramed: '24" x 24"',
-        medium: "Oil on Board",
+        sizeUnframed: '24 x 24 inches 61 x 61 cms',
+        sizeFramed: '28 x 28 inches 71 x 71 cms approx',
+        medium: "Oil on Plywood 5mm approx",
         image: "images/painting-15.png",
         description: "Blagh Blagh Blagh.",
         sold: false
     },
     {
-        title: "Time for reflectiom",
+        title: "Time for Reflection",
         price: 400,
-        sizeUnframed: '20" x 20"',
-        sizeFramed: '24" x 24"',
-        medium: "Oil on Board",
+        sizeUnframed: '12.75 x 21 inches 32 x 53 cms',
+        sizeFramed: '16.75 x 25 inches 43 x 64 cms approx',
+        medium: "Oil on Plywood 12mm approx",
         image: "images/painting-16.png",
         description: "Blagh Blagh Blagh.",
         sold: false
@@ -171,8 +172,8 @@ const paintings = [
     {
         title: "Journey's End",
         price: 400,
-        sizeUnframed: '20" x 20"',
-        sizeFramed: '24" x 24"',
+        sizeUnframed: '27.5 x 26.75 inches 70 x 68 cms approx',
+        sizeFramed: 'TBC',
         medium: "Oil on Board",
         image: "images/painting-17.png",
         description: "Blagh Blagh Blagh.",
@@ -181,8 +182,8 @@ const paintings = [
     {
         title: "Perfect Ending",
         price: 400,
-        sizeUnframed: '20" x 20"',
-        sizeFramed: '24" x 24"',
+        sizeUnframed: '20.25 x 27 inches 51 x 69 cms',
+        sizeFramed: '24.25 x 31 inches 62 x 79 cms approx',
         medium: "Oil on Board",
         image: "images/painting-18.png",
         description: "Blagh Blagh Blagh.",
