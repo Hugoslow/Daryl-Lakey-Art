@@ -60,7 +60,7 @@ const paintings = [
     },
     {
         title: "Breaking Through",
-        price: null,
+        price: TBC,
         sizeUnframed: 'TBC',
         sizeFramed: 'TBC',
         medium: "TBC",
@@ -70,7 +70,7 @@ const paintings = [
     },
     {
         title: "Wonder",
-        price: null,
+        price: TBC,
         sizeUnframed: 'TBC',
         sizeFramed: 'TBC',
         medium: "TBC",
