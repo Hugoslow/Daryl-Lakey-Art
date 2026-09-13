@@ -21,8 +21,8 @@ const paintings = [
     {
         title: "Snowbound Silence",
         price: 450,
-        sizeUnframed: '29.75 x 13 inches' '76 x 33 cm's,
-        sizeFramed: '33.75 x 17 inches' '85.7 x 43 cm's,
+        sizeUnframed: "29.75 x 13 inches 76 x 33 cm's",
+        sizeFramed: "33.75 x 17 inches 85.7 x 43 cm's",
         medium: "Oil on Board",
         image: "images/painting-1.png",
         description: "A luminous winter moon casting golden light across a snow-covered Yorkshire landscape.",
