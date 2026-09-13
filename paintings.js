@@ -31,7 +31,7 @@ const paintings = [
     {
         title: "Under the Weight of Blue",
         price: 525,
-        sizeUnframed: Not Available,
+        sizeUnframed: "Not Available",
         sizeFramed: "28.3" x 36.3" inches 72 x 92cm's",
         medium: "Oil on Board",
         image: "images/painting-2.png",
@@ -60,7 +60,7 @@ const paintings = [
     },
     {
         title: "Breaking Through",
-        price: Available Soon / Preorder,
+        price: "Available Soon / Preorder",
         sizeUnframed: "TBC",
         sizeFramed: "TBC",
         medium: "TBC",
@@ -70,7 +70,7 @@ const paintings = [
     },
     {
         title: "Wonder",
-        price: Available Soon / Preorder,
+        price: "Available Soon / Preorder",
         sizeUnframed: "TBC",
         sizeFramed: "TBC",
         medium: "TBC",
