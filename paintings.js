@@ -131,7 +131,7 @@ const paintings = [
     },
     {
         title: "Storm's Edge",
-        price: 525,
+        price: 425,
         sizeUnframed: '14 x 11 inches 36 x 28 cms',
         sizeFramed: '18 x 15 inches 46 x 38 cms approx',
         medium: "Oil on Canvas Board",
@@ -161,7 +161,7 @@ const paintings = [
     },
     {
         title: "Time for Reflection",
-        price: 400,
+        price: 470,
         sizeUnframed: '12.75 x 21 inches 32 x 53 cms',
         sizeFramed: '16.75 x 25 inches 43 x 64 cms approx',
         medium: "Oil on Plywood 12mm approx",
@@ -181,7 +181,7 @@ const paintings = [
     },
     {
         title: "Perfect Ending",
-        price: 400,
+        price: 525,
         sizeUnframed: '20.25 x 27 inches 51 x 69 cms',
         sizeFramed: '24.25 x 31 inches 62 x 79 cms approx',
         medium: "Oil on Board",
