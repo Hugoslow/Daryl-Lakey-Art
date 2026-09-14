@@ -36,7 +36,7 @@ const siteInfo = {
     // Enquiries are emailed to Daryl privately through Web3Forms (web3forms.com).
     // Paste the access key from the Web3Forms email between the quote marks.
     // The key is safe to have here: it can only send messages to Daryl.
-    commissionFormKey: "",
+    commissionFormKey: "76615992-a6cd-4b71-a5be-a9372281294a",
 
     // ----- FOOTER -----
     footerDescription: "Original oil landscape paintings capturing the beauty of the British countryside. Each piece is a unique, hand-painted original.",
@@ -45,5 +45,5 @@ const siteInfo = {
     // ----- SOCIAL MEDIA LINKS (leave empty "" if not used) -----
     instagramUrl: "",
     facebookUrl: "",
-    emailAddress: ""
+    emailAddress: "hello@daryllakeyart.com"
 };
