@@ -32,6 +32,12 @@ const siteInfo = {
     commissionsTitle: "Commission an Original Painting",
     commissionsDescription: "Have a favourite landscape or special place you'd love captured in oil? Get in touch to discuss a bespoke commission.",
 
+    // ----- COMMISSION FORM EMAILS -----
+    // Enquiries are emailed to Daryl privately through Web3Forms (web3forms.com).
+    // Paste the access key from the Web3Forms email between the quote marks.
+    // The key is safe to have here: it can only send messages to Daryl.
+    commissionFormKey: "",
+
     // ----- FOOTER -----
     footerDescription: "Original oil landscape paintings capturing the beauty of the British countryside. Each piece is a unique, hand-painted original.",
     copyrightYear: "2026",

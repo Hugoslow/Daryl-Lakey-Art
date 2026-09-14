@@ -888,6 +888,15 @@
             margin-top: 8px;
         }
         .form-submit:hover { background: var(--navy-light); }
+        .form-submit:disabled { opacity: 0.6; cursor: default; }
+        .form-status {
+            margin-top: 16px;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        .form-status:empty { display: none; }
+        .form-status.success { color: #2e7d32; }
+        .form-status.error { color: #c62828; }
 
         /* ===== FOOTER ===== */
         .site-footer {
@@ -1107,7 +1116,10 @@
                     <label for="commDetails">Tell me about your vision</label>
                     <textarea id="commDetails" required placeholder="Describe the scene, location, mood, or any reference photos you have..."></textarea>
                 </div>
-                <button type="submit" class="form-submit">Send Enquiry</button>
+                <!-- Hidden trap for spam bots: people never see or tick this -->
+                <input type="checkbox" id="commBotcheck" tabindex="-1" autocomplete="off" style="display:none;">
+                <button type="submit" class="form-submit" id="commSubmit">Send Enquiry</button>
+                <p class="form-status" id="commStatus" role="status"></p>
             </form>
         </div>
     </section>
@@ -1209,7 +1221,15 @@
     if (siteInfo.facebookUrl) footerConnect.innerHTML += '<a href="' + siteInfo.facebookUrl + '" target="_blank">Facebook</a>';
     if (siteInfo.emailAddress) footerConnect.innerHTML += '<a href="mailto:' + siteInfo.emailAddress + '">Email</a>';
     if (!siteInfo.instagramUrl && !siteInfo.facebookUrl && !siteInfo.emailAddress) {
-        footerConnect.innerHTML += '<a href="#">Instagram</a><a href="#">Facebook</a><a href="#">Email</a>';
+        footerConnect.innerHTML += '<a href="#commissions">Send an enquiry</a>';
+    }
+
+    // Prices set to "TBC" (or any text) in paintings.js aren't real prices yet
+    function hasPrice(p) {
+        return typeof p.price === 'number';
+    }
+    function formatPrice(p) {
+        return hasPrice(p) ? '£' + p.price : 'Price on application';
     }
 
     // ===== BUILD GALLERY FROM paintings.js =====
@@ -1232,7 +1252,7 @@
             '<div class="painting-info">' +
                 '<h3 class="painting-title">' + p.title + '</h3>' +
                 '<p class="painting-size">Size unframed - ' + p.sizeUnframed + '<br>Size framed - ' + p.sizeFramed + '<br>Medium - ' + p.medium + '</p>' +
-                '<p class="painting-price">£' + p.price + '</p>' +
+                '<p class="painting-price">' + formatPrice(p) + '</p>' +
                 '<div class="painting-actions">' +
                     '<button class="btn-view" onclick="openModal(' + index + ')">View Details</button>' +
                     '<button class="btn-cart" ' + cartOnclick + '>' + cartBtnText + '</button>' +
@@ -1263,7 +1283,7 @@
         document.getElementById('modalTitle').textContent = p.title;
         document.getElementById('modalSize').innerHTML = 'Size unframed - ' + p.sizeUnframed + '<br>Size framed - ' + p.sizeFramed;
         document.getElementById('modalMedium').textContent = 'Medium - ' + p.medium;
-        document.getElementById('modalPrice').textContent = '£' + p.price;
+        document.getElementById('modalPrice').textContent = formatPrice(p);
         document.getElementById('modalDesc').textContent = p.description;
 
         // Handle sold banner in modal
@@ -1300,6 +1320,10 @@
     function addToCart(index) {
         const p = paintings[index];
         if (!p || p.sold) return;
+        if (!hasPrice(p)) {
+            showToast('Please get in touch for the price of this painting');
+            return;
+        }
         if (cart.find(function(item) { return item.index === index; })) {
             showToast('This painting is already in your cart');
             return;
@@ -1348,11 +1372,58 @@
         showToast('Checkout coming soon — please contact Daryl directly for purchases');
     }
 
-    // Commission form
+    // Commission form: emails Daryl via Web3Forms, so his address never appears on the site
     function handleCommission(e) {
         e.preventDefault();
-        showToast('Thank you! Your commission enquiry has been sent.');
-        e.target.reset();
+        const form = e.target;
+        const button = document.getElementById('commSubmit');
+        const status = document.getElementById('commStatus');
+        const name = document.getElementById('commName').value.trim();
+
+        function showStatus(type, msg) {
+            status.className = 'form-status ' + type;
+            status.textContent = msg;
+        }
+
+        if (!siteInfo.commissionFormKey) {
+            console.warn('commissionFormKey is not set in siteinfo.js');
+            showStatus('error', 'Sorry, the enquiry form is not working right now. Please try again later.');
+            return;
+        }
+
+        button.disabled = true;
+        button.textContent = 'Sending...';
+        status.textContent = '';
+
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({
+                access_key: siteInfo.commissionFormKey,
+                subject: 'New commission enquiry from ' + name,
+                from_name: 'Daryl Lakey Art website',
+                botcheck: document.getElementById('commBotcheck').checked,
+                name: name,
+                email: document.getElementById('commEmail').value.trim(),
+                phone: document.getElementById('commPhone').value.trim() || 'Not given',
+                preferred_size: document.getElementById('commSize').value || 'Not given',
+                message: document.getElementById('commDetails').value.trim()
+            })
+        })
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+            if (!data.success) throw new Error(data.message);
+            form.reset();
+            showStatus('success', 'Thank you, ' + name + '! Your enquiry has been sent and Daryl will be in touch soon.');
+        })
+        .catch(function(err) {
+            console.error('Commission enquiry failed:', err);
+            showStatus('error', 'Sorry, your enquiry could not be sent. Please check your connection and try again.');
+        })
+        .finally(function() {
+            button.disabled = false;
+            button.textContent = 'Send Enquiry';
+        });
     }
 
     // Toast notification

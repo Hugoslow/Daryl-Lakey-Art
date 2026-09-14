@@ -53,7 +53,7 @@ const paintings = [
         title: "An Eternal Promise",
         price: 425,
         sizeUnframed: '15.75 x 24 inches 40 x 61 cms',
-        sizeFramed: '19.75 x 17 inches 50 x 71 cms',
+        sizeFramed: '19.75 x 28 inches 50 x 71 cms',
         medium: "Oil on Board",
         image: "images/painting-4.png",
         description: "Soft clouds drifting over a tranquil heath with a winding path leading to the horizon.",
